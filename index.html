@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation - Swaliha & Ruwais</title>
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="You are cordially invited to celebrate the wedding of Swaliha and Ruwais on August 9, 2026. Please RSVP.">
+  <meta property="og:title" content="Wedding Invitation - Swaliha & Ruwais">
+  <meta property="og:description" content="Celebrate with us on August 9, 2026 at Vanimel. RSVP online.">
+  <meta property="og:image" content="assets/wedding_arch.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Music (Optional, simple control) -->
+  <div class="music-control" id="music-control" style="display: none;">
+    <button class="music-btn" id="music-btn" aria-label="Toggle music">
+      <span class="music-icon">♪</span>
+    </button>
+  </div>
+
+  <!-- Outer Envelope Section -->
+  <div class="envelope-wrapper" id="envelope-wrapper">
+    <div class="envelope" id="envelope">
+      <!-- Front flap of envelope -->
+      <div class="flap top-flap"></div>
+      <div class="flap left-flap"></div>
+      <div class="flap right-flap"></div>
+      <div class="flap bottom-flap"></div>
+      
+      <!-- Ribbon & Ribbon Bow Seal -->
+      <div class="ribbon-horizontal"></div>
+      <div class="ribbon-vertical"></div>
+      <div class="bow-seal" id="bow-seal" aria-label="Open invitation">
+        <div class="bow-loop left-loop"></div>
+        <div class="bow-loop right-loop"></div>
+        <div class="bow-center"></div>
+        <div class="bow-tail left-tail"></div>
+        <div class="bow-tail right-tail"></div>
+      </div>
+      
+      <!-- Front Text Prompt -->
+      <div class="envelope-text">
+        <p class="invite-label">You Are Invited</p>
+        <p class="couple-names-cover">Swaliha & Ruwais</p>
+        <p class="click-instruction">Click the bow to open</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Invitation Content (Initially hidden behind envelope/revealed on open) -->
+  <div class="invitation-container" id="invitation-container">
+    
+    <!-- Hero Header / Monogram -->
+    <header class="section hero-section" id="hero">
+      <div class="monogram-wrapper fade-in">
+        <div class="monogram">SR</div>
+      </div>
+      <div class="intro-text fade-in">
+        <span class="sub-heading">The Wedding of</span>
+        <h1 class="couple-names">Swaliha & Ruwais</h1>
+        <p class="invite-message">Together with their families, invite you to share in their joy as they tie the knot.</p>
+      </div>
+    </header>
+
+    <!-- Scenic Illustration Section -->
+    <section class="section illustration-section fade-in">
+      <div class="illustration-frame">
+        <img src="assets/wedding_arch.png" alt="Wedding Arch" class="wedding-arch-img">
+      </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="section details-section fade-in" id="details">
+      <div class="details-card">
+        <h2 class="section-title">Save The Date</h2>
+        
+        <div class="date-time-container">
+          <div class="date-block">
+            <span class="day-name">Sunday</span>
+            <span class="date-day">09</span>
+            <span class="month-year">August 2026</span>
+          </div>
+          <div class="time-block">
+            <span class="time-hour">11:00 AM</span>
+          </div>
+        </div>
+
+        <div class="divider">
+          <span class="divider-dot"></span>
+          <span class="divider-line"></span>
+          <span class="divider-dot"></span>
+        </div>
+
+        <div class="venue-block">
+          <span class="venue-label">Venue</span>
+          <h3 class="venue-name">Vanimel</h3>
+          <p class="venue-address">Vanimel, Kozhikode, Kerala, India</p>
+          <a href="https://maps.google.com/?q=Vanimel,Kerala" target="_blank" rel="noopener noreferrer" class="maps-btn">
+            View Location on Map
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section countdown-section fade-in">
+      <h2 class="section-title">Counting Down to the Big Day</h2>
+      <div class="countdown-timer" id="countdown-timer">
+        <div class="timer-box">
+          <span class="timer-number" id="days">00</span>
+          <span class="timer-label">Days</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="hours">00</span>
+          <span class="timer-label">Hours</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="minutes">00</span>
+          <span class="timer-label">Minutes</span>
+        </div>
+        <div class="timer-box">
+          <span class="timer-number" id="seconds">00</span>
+          <span class="timer-label">Seconds</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Celebration Schedule Timeline -->
+    <section class="section timeline-section fade-in" id="timeline">
+      <h2 class="section-title">The Celebration</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">11:00 AM</span>
+            <h3 class="timeline-title">Nikah Ceremony</h3>
+            <p class="timeline-desc">The official marriage contract ceremony representing union and blessings.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">12:30 PM</span>
+            <h3 class="timeline-title">Traditional Feast</h3>
+            <p class="timeline-desc">A delicious lunch gathering with family and friends to celebrate the newlyweds at brides home</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-time">04:00 PM</span>
+            <h3 class="timeline-title">Groom's Reception</h3>
+            <p class="timeline-desc">A warm and joyful celebration hosted at the groom's residence to welcome the newlyweds into their new life together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="section rsvp-section fade-in" id="rsvp">
+      <div class="rsvp-card">
+        <p class="rsvp-subtitle">Please respond by August 1, 2026 so we can plan accordingly.</p>
+        
+        <form class="rsvp-form" id="rsvp-form">
+          <div class="form-group">
+            <label for="guest-name">Your Full Name</label>
+            <input type="text" id="guest-name" name="name" placeholder="E.g., John Doe" required>
+          </div>
+          
+          <div class="form-group">
+            <label>Will you be attending?</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="attending" checked required>
+                <span class="custom-radio"></span>
+                Joyfully Accept
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="declined" required>
+                <span class="custom-radio"></span>
+                Regretfully Decline
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group" id="guests-count-group">
+            <label for="guests-count">Number of Guests</label>
+            <select id="guests-count" name="guestsCount">
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People</option>
+              <option value="5">5 People</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="guest-notes">Special Wishes / Notes</label>
+            <textarea id="guest-notes" name="notes" placeholder="Send your blessings or specify dietary preferences..." rows="3"></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn" id="submit-btn">Send Response</button>
+        </form>
+
+        <!-- Success Modal / Overlay inside card -->
+        <div class="success-message" id="success-message">
+          <div class="success-icon">✓</div>
+          <h3>Thank You!</h3>
+          <p id="success-feedback-text">Your RSVP response has been successfully sent.</p>
+          <div class="success-actions">
+            <button type="button" class="rsvp-edit-btn" id="rsvp-edit-btn">Edit Response</button>
+            <button type="button" class="rsvp-reset-btn" id="rsvp-reset-btn">Submit Another RSVP</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Responses Admin Dashboard (Visible with ?admin=true) -->
+    <section class="section admin-panel fade-in" id="admin-panel" style="display: none;">
+      <div class="admin-card">
+        <h2 class="section-title">RSVP Responses</h2>
+        <div class="admin-summary">
+          <div class="summary-box">
+            <span class="summary-num" id="total-attending">0</span>
+            <span class="summary-label">Attending</span>
+          </div>
+          <div class="summary-box">
+            <span class="summary-num" id="total-declined">0</span>
+            <span class="summary-label">Declined</span>
+          </div>
+          <div class="summary-box">
+            <span class="summary-num" id="total-guests">0</span>
+            <span class="summary-label">Total Guests</span>
+          </div>
+        </div>
+        
+        <div class="table-wrapper">
+          <table class="rsvp-table" id="rsvp-table">
+            <thead>
+              <tr>
+                <th>Guest</th>
+                <th>Status</th>
+                <th>Guests</th>
+                <th>Wishes / Notes</th>
+              </tr>
+            </thead>
+            <tbody id="rsvp-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+        <div class="admin-actions">
+          <button type="button" class="admin-btn clear-btn" id="clear-rsvps-btn">Clear All Responses</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="wedding-footer">
+      <div class="footer-monogram">SR</div>
+      <p class="footer-couple">Swaliha & Ruwais</p>
+      <p class="footer-date">09.08.2026</p>
+      <div class="footer-credits">
+        <p>Made with love for the couple</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
