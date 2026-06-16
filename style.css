@@ -1014,7 +1014,13 @@ body {
 /* Fade-in Scroll Animations Setup */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
+  transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive adjustments */
