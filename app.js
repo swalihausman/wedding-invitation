@@ -76,6 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
       envelopeWrapper.classList.add('open');
       invitationContainer.classList.add('visible');
       
+      // Trigger popper blast!
+      try {
+        triggerConfetti();
+      } catch(e) {
+        console.warn("Confetti blast failed:", e);
+      }
+      
       // Trigger scroll checks to reveal hero
       setTimeout(() => {
         const heroSection = document.getElementById('hero');
@@ -343,5 +350,116 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
+  }
+
+  // --- Canvas Confetti Popper Blast Animation ---
+  function triggerConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const colors = [
+      '#D4AF37', // Gold
+      '#EFC7B9', // Soft rose pink
+      '#C2185B', // Ruby rose red
+      '#FFFFFF', // White
+      '#AA7C11', // Dark gold
+      '#E2D7C5'  // Champagne
+    ];
+
+    class ConfettiParticle {
+      constructor(x, y, angle, speed) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 8 + 6;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        
+        const rad = angle * Math.PI / 180;
+        this.vx = Math.cos(rad) * speed;
+        this.vy = Math.sin(rad) * speed;
+        
+        this.gravity = 0.35;
+        this.friction = 0.985;
+        
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = Math.random() * 6 - 3;
+        this.opacity = 1.0;
+        this.fadeSpeed = Math.random() * 0.005 + 0.006;
+      }
+
+      update() {
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.rotation += this.rotationSpeed;
+        this.opacity -= this.fadeSpeed;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.globalAlpha = Math.max(0, this.opacity);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    const particles = [];
+    const particleCount = 100;
+
+    // Left Popper (shoots up and right)
+    for (let i = 0; i < particleCount; i++) {
+      const angle = -45 + (Math.random() * 30 - 15);
+      const speed = 14 + Math.random() * 18;
+      particles.push(new ConfettiParticle(0, height, angle, speed));
+    }
+
+    // Right Popper (shoots up and left)
+    for (let i = 0; i < particleCount; i++) {
+      const angle = -135 + (Math.random() * 30 - 15);
+      const speed = 14 + Math.random() * 18;
+      particles.push(new ConfettiParticle(width, height, angle, speed));
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      let activeParticles = false;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (p.opacity > 0) {
+          p.update();
+          p.draw();
+          activeParticles = true;
+        }
+      }
+
+      if (activeParticles) {
+        requestAnimationFrame(animate);
+      } else {
+        canvas.remove();
+      }
+    }
+
+    requestAnimationFrame(animate);
   }
 });
