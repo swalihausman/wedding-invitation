@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.warn("Audio initialization failed:", e);
     }
 
-    // 2. Slide envelope away and show card
+    // 2. Slide envelope away and show card (after flap opens & card slides up)
     setTimeout(() => {
       envelopeWrapper.classList.add('open');
       invitationContainer.classList.add('visible');
@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 1600);
+    }, 5000);
 
-    // Cinematic Confetti Popper Blast right as names fade in (2.0s)
+    // Cinematic Confetti Popper Blast right as invitation details fade in (6.0s)
     setTimeout(() => {
       try {
         triggerConfetti();
       } catch(e) {
         console.warn("Confetti blast failed:", e);
       }
-    }, 2000);
+    }, 6000);
   });
 
   // --- Countdown Timer ---
