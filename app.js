@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 1600);
+    }, 8500);
   });
 
   // --- Countdown Timer ---
