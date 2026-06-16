@@ -95,17 +95,17 @@ body {
   --envelope-bg-inside: #D6A597;  /* Inside shadow color */
   --envelope-bg-light: #F2D2C6;   /* Highlight side flaps */
   --envelope-bg-dark: #DEB4A6;    /* Bottom shade flap */
-  --envelope-width: 90%;
-  --envelope-height: 76%;
-  --flap-height: 38%;
-  --card-height: 72%;
-  --card-translate-y: -60%;
+  --envelope-width: 100%;
+  --envelope-height: 100%;
+  --flap-height: 50%;
+  --card-height: 90%;
+  --card-translate-y: -45%;
 }
 
 .envelope-container {
   position: relative;
   width: var(--envelope-width);
-  height: calc(var(--envelope-height) + 60px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,19 +153,19 @@ body {
 /* Side & Bottom Flaps using clip-path */
 .envelope-left {
   background-color: var(--envelope-bg-light);
-  clip-path: polygon(0 0, 48% 50%, 0 100%);
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
   z-index: 3;
 }
 
 .envelope-right {
   background-color: var(--envelope-bg-light);
-  clip-path: polygon(100% 0, 52% 50%, 100% 100%);
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
   z-index: 3;
 }
 
 .envelope-bottom {
   background-color: var(--envelope-bg-dark);
-  clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+  clip-path: polygon(0 100%, 50% 50%, 100% 100%);
   z-index: 3;
 }
 
@@ -184,7 +184,7 @@ body {
 /* Gold Wax Seal on Top Flap */
 .top-flap-monogram {
   position: absolute;
-  bottom: 35px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
@@ -254,8 +254,11 @@ body {
 
 /* Click Instructions below envelope */
 .envelope-text {
-  margin-top: 25px;
+  position: absolute;
+  bottom: 40px;
+  z-index: 5;
   text-align: center;
+  pointer-events: none;
   animation: float 4s ease-in-out infinite 0.5s;
 }
 
@@ -382,7 +385,7 @@ body {
   
   /* Cinematic slow materialization */
   opacity: 0;
-  animation: cinematic-fade-in 2.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  animation: cinematic-fade-in 5.0s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
   animation-delay: 1.8s;
 }
 

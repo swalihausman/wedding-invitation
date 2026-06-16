@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, "&#039;");
   }
 
-  // --- Canvas Confetti Popper Blast Animation ---
+  // --- Canvas Confetti Popper Blast & Falling Hearts Animation ---
   function triggerConfetti() {
     const phoneContainer = document.querySelector('.phone-container');
     const canvas = document.createElement('canvas');
@@ -430,41 +430,118 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    class HeartParticle {
+      constructor(isInitial = false) {
+        this.x = Math.random() * width;
+        // If initial, distribute across height; otherwise spawn just above top
+        this.y = isInitial ? Math.random() * height : -20;
+        this.size = Math.random() * 8 + 6; // small hearts: 6px to 14px
+        
+        const heartColors = [
+          '#FF6B8B', // Soft rose pink
+          '#FF8DA1', // Light pink
+          '#E91E63', // Deep rose
+          '#FF4081', // Vivid pink
+          '#FF1744'  // Soft red
+        ];
+        this.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+        
+        // Gentle falling speed
+        this.speedY = 0.8 + Math.random() * 1.2; // 0.8 to 2.0 px/frame
+        this.speedX = (Math.random() - 0.5) * 0.5; // slight drift
+        
+        // Sway / spring season blossom effect
+        this.swaySpeed = 0.01 + Math.random() * 0.02;
+        this.swayAngle = Math.random() * Math.PI * 2;
+        this.swayRadius = 0.5 + Math.random() * 1.5;
+        
+        // Rotate slowly
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 1.5;
+        this.opacity = 0.4 + Math.random() * 0.5; // gentle translucency
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.swayAngle += this.swaySpeed;
+        this.x += this.speedX + Math.sin(this.swayAngle) * 0.3;
+        this.rotation += this.rotationSpeed;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation * Math.PI / 180);
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        
+        // Symmetrical bezier heart drawing path
+        ctx.beginPath();
+        const size = this.size;
+        ctx.moveTo(0, -size / 4);
+        ctx.bezierCurveTo(-size / 2, -size * 0.7, -size, -size * 0.3, 0, size * 0.8);
+        ctx.bezierCurveTo(size, -size * 0.3, size / 2, -size * 0.7, 0, -size / 4);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
     const particles = [];
-    const particleCount = 100;
+    const heartParticles = [];
+    const confettiCount = 100;
 
     // Left Popper (shoots up and right)
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < confettiCount; i++) {
       const angle = -45 + (Math.random() * 30 - 15);
       const speed = 14 + Math.random() * 18;
       particles.push(new ConfettiParticle(0, height, angle, speed));
     }
 
     // Right Popper (shoots up and left)
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < confettiCount; i++) {
       const angle = -135 + (Math.random() * 30 - 15);
       const speed = 14 + Math.random() * 18;
       particles.push(new ConfettiParticle(width, height, angle, speed));
     }
 
+    // Spawn initial heart particles distributed down the screen
+    for (let i = 0; i < 15; i++) {
+      heartParticles.push(new HeartParticle(true));
+    }
+
     function animate() {
       ctx.clearRect(0, 0, width, height);
 
-      let activeParticles = false;
-      for (let i = 0; i < particles.length; i++) {
+      // 1. Update and draw confetti particles
+      for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        if (p.opacity > 0) {
-          p.update();
-          p.draw();
-          activeParticles = true;
+        p.update();
+        p.draw();
+        if (p.opacity <= 0) {
+          particles.splice(i, 1);
         }
       }
 
-      if (activeParticles) {
-        requestAnimationFrame(animate);
-      } else {
-        canvas.remove();
+      // 2. Update and draw heart particles
+      for (let i = heartParticles.length - 1; i >= 0; i--) {
+        const h = heartParticles[i];
+        h.update();
+        h.draw();
+        // Remove if off screen
+        if (h.y > height + 20) {
+          heartParticles.splice(i, 1);
+        }
       }
+
+      // 3. Continually spawn falling hearts
+      if (heartParticles.length < 35) {
+        if (Math.random() < 0.08) {
+          heartParticles.push(new HeartParticle(false));
+        }
+      }
+
+      requestAnimationFrame(animate);
     }
 
     requestAnimationFrame(animate);
