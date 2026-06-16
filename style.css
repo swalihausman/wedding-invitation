@@ -96,10 +96,10 @@ body {
   --envelope-bg-light: #F2D2C6;   /* Highlight side flaps */
   --envelope-bg-dark: #DEB4A6;    /* Bottom shade flap */
   --envelope-width: 90%;
-  --envelope-height: 65%;
-  --flap-height: 32.5%;
-  --card-height: 60%;
-  --card-translate-y: -50%;
+  --envelope-height: 76%;
+  --flap-height: 38%;
+  --card-height: 72%;
+  --card-translate-y: -60%;
 }
 
 .envelope-container {
@@ -1018,6 +1018,26 @@ body {
 }
 
 /* Responsive adjustments */
+@media (max-width: 480px) {
+  body {
+    overflow-y: auto !important;
+  }
+  
+  .phone-container {
+    height: auto !important;
+    min-height: 100vh;
+    box-shadow: none;
+  }
+  
+  .envelope-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
 @media (max-width: 400px) {
   .couple-names {
     font-size: 2.2rem;
