@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Background Music (Optional, simple control) -->
+  <div class="phone-container">
+    <!-- Background Music (Optional, simple control) -->
   <div class="music-control" id="music-control" style="display: none;">
     <button class="music-btn" id="music-btn" aria-label="Toggle music">
       <span class="music-icon">♪</span>
@@ -40,7 +40,11 @@
         <!-- The Card sliding out -->
         <div class="envelope-card" id="envelope-card">
           <div class="card-monogram">SR</div>
-          <div class="card-names">Swaliha & Ruwais</div>
+          <h1 class="couple-names-card">
+            <span>Ruwais</span>
+            <span class="and-symbol-card">&</span>
+            <span>Swaliha</span>
+          </h1>
           <div class="card-date">09.08.2026</div>
         </div>
         
@@ -276,6 +280,7 @@
       </div>
     </footer>
   </div>
+</div>
 
   <!-- Scripts -->
   <script src="app.js"></script>

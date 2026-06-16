@@ -31,15 +31,30 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-primary);
+  background-color: #E2D7C5; /* Solid champagne cream desktop background */
   color: var(--text-dark);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow: hidden; /* Disable scrolling outside phone container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.phone-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
   background-image: url('assets/watercolor_bg.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Base animations */
@@ -63,11 +78,11 @@ body {
 
 /* Envelope Container & 3D Fold Effects */
 .envelope-wrapper {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1000;
   background-color: transparent;
   display: flex;
@@ -82,11 +97,11 @@ body {
   --envelope-bg-inside: #D6A597;  /* Inside shadow color */
   --envelope-bg-light: #F2D2C6;   /* Highlight side flaps */
   --envelope-bg-dark: #DEB4A6;    /* Bottom shade flap */
-  --envelope-width: 280px;
-  --envelope-height: 420px;
-  --flap-height: 210px;
-  --card-height: 390px;
-  --card-translate-y: -320px;
+  --envelope-width: 90%;
+  --envelope-height: 65%;
+  --flap-height: 32.5%;
+  --card-height: 60%;
+  --card-translate-y: -50%;
 }
 
 .envelope-container {
@@ -194,9 +209,9 @@ body {
 /* Card inside the envelope */
 .envelope-card {
   position: absolute;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
+  bottom: 4%;
+  left: 4%;
+  right: 4%;
   height: var(--card-height);
   background-color: #FFFFFF;
   border-radius: 6px;
@@ -224,12 +239,25 @@ body {
   letter-spacing: 1px;
 }
 
-.card-names {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  color: var(--text-dark);
+.couple-names-card {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.8rem;
   font-weight: 400;
-  margin-bottom: 6px;
+  color: #C2185B; /* Deep ruby rose red */
+  margin: 15px 0;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.couple-names-card .and-symbol-card {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--accent-gold-dark);
+  margin: 3px 0;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .card-date {
@@ -946,7 +974,7 @@ body {
 
 /* Background Music Button (Float Bottom Left) */
 .music-control {
-  position: fixed;
+  position: absolute;
   bottom: 20px;
   left: 20px;
   z-index: 999;
@@ -987,16 +1015,6 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 350px) {
-  .envelope-wrapper {
-    --envelope-width: 240px;
-    --envelope-height: 360px;
-    --flap-height: 180px;
-    --card-height: 330px;
-    --card-translate-y: -270px;
-  }
-}
-
 @media (max-width: 400px) {
   .couple-names {
     font-size: 2.2rem;

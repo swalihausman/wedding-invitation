@@ -354,23 +354,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Canvas Confetti Popper Blast Animation ---
   function triggerConfetti() {
+    const phoneContainer = document.querySelector('.phone-container');
     const canvas = document.createElement('canvas');
-    canvas.style.position = 'fixed';
+    canvas.style.position = 'absolute';
     canvas.style.top = '0';
     canvas.style.left = '0';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.pointerEvents = 'none';
     canvas.style.zIndex = '9999';
-    document.body.appendChild(canvas);
+    phoneContainer.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    let width = canvas.width = phoneContainer.clientWidth;
+    let height = canvas.height = phoneContainer.clientHeight;
 
     window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      width = canvas.width = phoneContainer.clientWidth;
+      height = canvas.height = phoneContainer.clientHeight;
     });
 
     const colors = [
