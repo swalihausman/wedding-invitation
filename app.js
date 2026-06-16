@@ -143,6 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', handleScrollAnimations);
+  const phoneContainer = document.querySelector('.phone-container');
+  if (phoneContainer) {
+    phoneContainer.addEventListener('scroll', handleScrollAnimations);
+  }
 
   // --- RSVP Dynamic Form Interactions ---
   // Hide/Show guest dropdown based on attendance
