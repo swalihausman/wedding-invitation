@@ -2,7 +2,6 @@ const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz95bTitXDqUca
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- DOM Elements ---
-  const bowSeal = document.getElementById('bow-seal');
   const envelope = document.getElementById('envelope');
   const envelopeWrapper = document.getElementById('envelope-wrapper');
   const invitationContainer = document.getElementById('invitation-container');
@@ -51,9 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Envelope Opening Sequence ---
-  bowSeal.addEventListener('click', () => {
-    // 1. Open envelope flap & slide out bow
-    envelope.classList.add('opened-flap');
+  envelope.addEventListener('click', () => {
+    // 1. Open envelope flap (adds opened class)
+    envelope.classList.add('opened');
     
     // Optional: Start music on user interaction
     try {
@@ -83,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 1000);
+    }, 1600);
   });
 
   // --- Countdown Timer ---

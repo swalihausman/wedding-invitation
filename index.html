@@ -29,29 +29,33 @@
 
   <!-- Outer Envelope Section -->
   <div class="envelope-wrapper" id="envelope-wrapper">
-    <div class="envelope" id="envelope">
-      <!-- Front flap of envelope -->
-      <div class="flap top-flap"></div>
-      <div class="flap left-flap"></div>
-      <div class="flap right-flap"></div>
-      <div class="flap bottom-flap"></div>
-      
-      <!-- Ribbon & Ribbon Bow Seal -->
-      <div class="ribbon-horizontal"></div>
-      <div class="ribbon-vertical"></div>
-      <div class="bow-seal" id="bow-seal" aria-label="Open invitation">
-        <div class="bow-loop left-loop"></div>
-        <div class="bow-loop right-loop"></div>
-        <div class="bow-center"></div>
-        <div class="bow-tail left-tail"></div>
-        <div class="bow-tail right-tail"></div>
+    <div class="envelope-container" id="envelope-container">
+      <div class="envelope" id="envelope">
+        <!-- Back of the envelope -->
+        <div class="envelope-paper envelope-back"></div>
+        
+        <!-- Inner pocket shading -->
+        <div class="envelope-pocket"></div>
+        
+        <!-- The Card sliding out -->
+        <div class="envelope-card" id="envelope-card">
+          <div class="card-monogram">SR</div>
+          <div class="card-names">Swaliha & Ruwais</div>
+          <div class="card-date">09.08.2026</div>
+        </div>
+        
+        <!-- Front flaps forming the pocket -->
+        <div class="envelope-paper envelope-left"></div>
+        <div class="envelope-paper envelope-right"></div>
+        <div class="envelope-paper envelope-bottom"></div>
+        
+        <!-- Top folding flap -->
+        <div class="envelope-paper envelope-top" id="envelope-top">
+          <div class="top-flap-monogram">SR</div>
+        </div>
       </div>
-      
-      <!-- Front Text Prompt -->
       <div class="envelope-text">
-        <p class="invite-label">You Are Invited</p>
-        <p class="couple-names-cover">Swaliha & Ruwais</p>
-        <p class="click-instruction">Click the bow to open</p>
+        <p class="click-instruction">Click the envelope to open</p>
       </div>
     </div>
   </div>
