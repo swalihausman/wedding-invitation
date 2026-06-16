@@ -76,20 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
       envelopeWrapper.classList.add('open');
       invitationContainer.classList.add('visible');
       
-      // Trigger popper blast!
-      try {
-        triggerConfetti();
-      } catch(e) {
-        console.warn("Confetti blast failed:", e);
-      }
-      
       // Trigger scroll checks to reveal hero
       setTimeout(() => {
         const heroSection = document.getElementById('hero');
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 8500);
+    }, 1600);
+
+    // Cinematic Confetti Popper Blast right as names fade in (2.0s)
+    setTimeout(() => {
+      try {
+        triggerConfetti();
+      } catch(e) {
+        console.warn("Confetti blast failed:", e);
+      }
+    }, 2000);
   });
 
   // --- Countdown Timer ---
