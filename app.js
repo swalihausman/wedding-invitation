@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 5000);
+    }, 8000);
 
-    // Cinematic Confetti Popper Blast right as invitation details fade in (6.0s)
+    // Cinematic Confetti Popper Blast right as invitation details fade in (9.5s)
     setTimeout(() => {
       try {
         triggerConfetti();
       } catch(e) {
         console.warn("Confetti blast failed:", e);
       }
-    }, 6000);
+    }, 9500);
   });
 
   // --- Countdown Timer ---
