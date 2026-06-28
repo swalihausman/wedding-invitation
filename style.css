@@ -87,7 +87,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 2.5s;
   overflow: hidden;
 
   /* Envelope local tokens */
@@ -177,7 +177,7 @@ body {
   height: var(--flap-height);
   transform-origin: top center;
   transform: rotateX(0deg);
-  transition: transform 1.0s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 0.5s;
+  transition: transform 3.5s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 1.5s;
   box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 }
 

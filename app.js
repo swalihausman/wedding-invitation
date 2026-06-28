@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 1000);
+    }, 3500);
 
-    // Confetti Popper Blast & Falling Hearts right as invitation card appears (1.2s)
+    // Confetti Popper Blast & Falling Hearts right as invitation card appears (4.5s)
     setTimeout(() => {
       try {
         triggerConfetti();
       } catch(e) {
         console.warn("Confetti blast failed:", e);
       }
-    }, 1200);
+    }, 4500);
   });
 
   // --- Countdown Timer ---
