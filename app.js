@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.warn("Audio initialization failed:", e);
     }
 
-    // 2. Slide envelope away and show card (after flap opens & card slides up)
+    // 2. Slide envelope away and show main invitation card (after flap opens)
     setTimeout(() => {
       envelopeWrapper.classList.add('open');
       invitationContainer.classList.add('visible');
@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) heroSection.classList.add('active');
         handleScrollAnimations();
       }, 100);
-    }, 8000);
+    }, 1000);
 
-    // Cinematic Confetti Popper Blast right as invitation details fade in (9.5s)
+    // Confetti Popper Blast & Falling Hearts right as invitation card appears (1.2s)
     setTimeout(() => {
       try {
         triggerConfetti();
       } catch(e) {
         console.warn("Confetti blast failed:", e);
       }
-    }, 9500);
+    }, 1200);
   });
 
   // --- Countdown Timer ---
